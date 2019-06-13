@@ -8,12 +8,13 @@ import time
 import resnet 
 import os
 import DenseNet
+import Inception
 #os.environ["CUDA_VISIBLE_DEVICES"]="0"
 
 class FaceResNet(M.Model):
 	def initialize(self, num_classes):
 		# self.resnet = mobilenet.MobileFaceHead([2, 8, 16, 4])
-		self.resnet = DenseNet.denseNet(512)
+		self.resnet = Inception.Inception3(512)
 		self.classifier = losspart.MarginalCosineLayer(num_classes)
 
 	def forward(self, x, label):
